@@ -45,15 +45,15 @@
       copy:
         src: "index.html"
         dest: "/myfile/"
-    - name: Creating container using HTTPD Image
-      docker_container:
-        name: "MyWebServer3"
-        image: "httpd"
-        state: started
-        exposed_ports:
-        - "80"
-        ports:
-        - "80:80"
-        volumes:
-        - /myfile:/usr/local/apache2/htdocs/
+    #- name: Creating container using HTTPD Image
+    #  docker_container:
+    #    name: "MyWebServer3"
+     #   image: "httpd"
+    #    state: started
+    #    exposed_ports:
+    #    - "80"
+    #    ports:
+    #    - "80:80"
+    #    volumes:
+    #    - /myfile:/usr/local/apache2/htdocs/
 
