@@ -41,10 +41,10 @@
       file:
         path: "/myfile"
         state: directory
-    - name: "Copying local files"
-      copy:
-        src: "index.html"
-        dest: "/myfile/"
+    #- name: "Copying local files"
+    #  copy:
+    #    src: "index.html"
+    #    dest: "/myfile/"
     #- name: Creating container using HTTPD Image
     #  docker_container:
     #    name: "MyWebServer3"
