@@ -1,6 +1,5 @@
 ---
 - hosts: ec2-instance
-
   become: true
   tasks:
     - name: Install required system packages
