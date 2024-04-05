@@ -41,7 +41,8 @@
       file:
         path: "/myfile"
         state: directory
-    - name: "Copying local files"
+
+    #- name: "Copying local files"
       copy:
         src: "index.html"
         dest: "/myfile/"
