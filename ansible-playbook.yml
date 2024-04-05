@@ -53,7 +53,7 @@
         exposed_ports:
         - "80"
         ports:
-        - "80:80"
+        - "8000:80"
         volumes:
         - /myWebApp:/usr/local/apache2/htdocs/
 
