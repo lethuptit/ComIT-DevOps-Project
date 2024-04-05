@@ -38,15 +38,15 @@
         name: docker
     - name: "Creating folder and copying html file"
       file:
-        path: "/myfile"
+        path: "/myWebApp"
         state: directory
     - name: "Copying local files"
       copy:
         src: "index.html"
-        dest: "/myfile/"
+        dest: "/myWebApp/"
     - name: Creating container using HTTPD Image
       docker_container:
-        name: "MyWebServer3"
+        name: "MyWebServer"
         image: "httpd"
         state: started
         exposed_ports:
@@ -54,5 +54,5 @@
         ports:
         - "80:80"
         volumes:
-        - /myfile:/usr/local/apache2/htdocs/
+        - /myWebApp:/usr/local/apache2/htdocs/
 
