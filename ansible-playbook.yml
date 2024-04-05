@@ -51,10 +51,10 @@
       docker_container:
         name: "MyWebServer"
         image: "httpd"
-        #image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest"
+        image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest"
         state: started
         debug: no
-        pull: no
+        pull: yes
         exposed_ports:
         - "80"
         ports:
