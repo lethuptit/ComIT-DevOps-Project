@@ -36,13 +36,16 @@
     - name: Install Docker Module for Python
       pip:
         name: docker
+
     - name: "Creating folder and copying html file"
       file:
-        path: "/myWebApp"
+        path: "/myfile"
         state: directory
+    - name: "Copying local files"
       copy:
         src: "index.html"
-        dest: "/myWebApp/"
+        dest: "/myfile/"
+
     - name: Creating container using HTTPD Image
       docker_container:
         name: "MyWebServer"
@@ -50,7 +53,7 @@
         #image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest"
         state: started
         debug: no
-        pull: yes
+        pull: no
         exposed_ports:
         - "80"
         ports:
