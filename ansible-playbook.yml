@@ -47,8 +47,9 @@
     - name: Creating container using HTTPD Image
       docker_container:
         name: "MyWebServer"
-        image: "httpd"
+        image: "httpd-test"
         state: started
+        debug: no
         exposed_ports:
         - "80"
         ports:
