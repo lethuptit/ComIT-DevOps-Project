@@ -40,16 +40,17 @@
       file:
         path: "/myWebApp"
         state: directory
-    - name: "Copying local files"
       copy:
         src: "index.html"
         dest: "/myWebApp/"
     - name: Creating container using HTTPD Image
       docker_container:
         name: "MyWebServer"
-        image: "httpd-test"
+        image: "httpd"
+        #image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest"
         state: started
         debug: no
+        pull: yes
         exposed_ports:
         - "80"
         ports:

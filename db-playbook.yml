@@ -1,0 +1,12 @@
+- name: Create Mysql container
+      docker_container:
+        name: mysql
+        image: mysql
+        state: started
+        recreate: yes
+        env:
+          MYSQL_ROOT_PASSWORD: "{{ mysql_root_pass }}"
+        exposed_ports:
+          - "{{ mysql_port }}"
+        volumes:
+          - db_data:/var/lib/mysql/data
