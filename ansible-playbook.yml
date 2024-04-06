@@ -1,5 +1,5 @@
 ---
-- hosts: ec2-instance
+- hosts: ec2-instance-awslinux
   become: true
   vars:
     container_count: 4
