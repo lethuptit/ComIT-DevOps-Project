@@ -60,9 +60,9 @@
     #- name: Add docker credentials for ubuntu user
     #  copy: src=.docker/dockercfg.json dest=/root/.dockercfg
 
-- hosts: ec2-instance
-  become: false
-  tasks:
+#- hosts: ec2-instance
+#  become: false
+#  tasks:
     - name: Creating container using HTTPD Image
       docker_container:
         name: "MyWebServer" #"{{container_name}}""
@@ -72,9 +72,9 @@
         debug: no
         pull: yes
         exposed_ports:
-        - "80"
+        - "8000"
         ports:
-        - "8080:80"
+        - "80:8000"
         volumes:
         - /myWebApp:/usr/local/apache2/htdocs/
       register: container_output  #return output of the container
