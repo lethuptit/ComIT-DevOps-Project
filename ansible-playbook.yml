@@ -60,9 +60,9 @@
     #- name: Add docker credentials for ubuntu user
     #  copy: src=.docker/dockercfg.json dest=/root/.dockercfg
 
-#- hosts: ec2-instance
-#  become: false
-#  tasks:
+- hosts: ec2-instance
+  become: false
+  tasks:
     - name: Creating container using HTTPD Image
       docker_container:
         name: "MyWebServer" #"{{container_name}}""
