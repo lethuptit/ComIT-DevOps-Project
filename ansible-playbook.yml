@@ -1,6 +1,11 @@
 ---
-- hosts: ec2-instance
+- hosts: ec2-instance-awslinux
   become: true
+  vars:
+    container_count: 4
+    container_name: docker_web
+    container_image: ubuntu
+    container_command: sleep 1d
   tasks:
     - name: Install required system packages
       apt:
@@ -37,6 +42,11 @@
       pip:
         name: docker
 
+    - name: Pull default Docker image
+      docker_image:
+        name: "{{ container_image }}"
+        source: pull
+
     - name: "Creating folder and copying html file"
       file:
         path: "/myfile"
@@ -47,11 +57,14 @@
         src: "index.html"
         dest: "/myfile/"
 
+    - name: Add docker credentials for ubuntu user
+      copy: src=.docker/dockercfg.json dest=/root/.dockercfg
+
     - name: Creating container using HTTPD Image
       docker_container:
-        name: "MyWebServer"
-        image: "httpd"
-        image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest"
+        name: "MyWebServer" #"{{container_name}}""
+        #image: "httpd" 
+        image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest" #"{{ container_image }}"
         state: started
         debug: no
         pull: yes
@@ -61,4 +74,9 @@
         - "8080:80"
         volumes:
         - /myWebApp:/usr/local/apache2/htdocs/
+      register: container_output  #return output of the container
+
+    - name: Get container output
+    debug:
+      msg: "Docker said: {{ container_output.Output }}"
 
