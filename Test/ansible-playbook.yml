@@ -1,0 +1,26 @@
+---
+- hosts: ec2-instance
+  become: false
+  tasks:
+    - name: Creating container using HTTPD Image
+      docker_container:
+        name: "MyWebServer" #"{{container_name}}""
+        #image: "httpd" 
+        image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest" #"{{ container_image }}"
+        state: started
+        debug: no
+        pull: yes
+        exposed_ports:
+        - "80"
+        ports:
+        - "8080:80"
+        volumes:
+        - /myWebApp:/usr/local/apache2/htdocs/
+      register: container_output  #return output of the container
+
+    #- name: Get its output
+    #debug:
+    #  msg: "Docker said: {{ container_output.Output }}"
+
+
+
