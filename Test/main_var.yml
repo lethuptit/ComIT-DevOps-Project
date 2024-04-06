@@ -1,7 +1,7 @@
 ---
 aws_system_user: root
 aws_profile: default
-aws_access_key: "<aws-accesss-key>"
-aws_secret_key: "<aws-secret-key>"
-aws_region: eu-west-2
+aws_access_key: "AKIAZQ3DSGJ2PRYDMGUW"
+aws_secret_key: "<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>"
+aws_region: us-east-1
 aws_format: table

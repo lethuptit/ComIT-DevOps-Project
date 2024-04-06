@@ -1,6 +1,6 @@
 ---
-- hosts: all
+- hosts: ec2-instance
   vars_files:
-    - vars/main.yml
+    - vars_main.yml
   tasks:
-    - include: tasks/main.yml
+    - include: main.yml
