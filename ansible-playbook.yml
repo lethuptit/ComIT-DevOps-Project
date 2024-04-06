@@ -1,6 +1,6 @@
 ---
 - hosts: ec2-instance
-  become: false
+  become: true
   vars:
     container_count: 4
     container_name: docker_web
@@ -60,6 +60,9 @@
     #- name: Add docker credentials for ubuntu user
     #  copy: src=.docker/dockercfg.json dest=/root/.dockercfg
 
+- hosts: ec2-instance
+  become: false
+  tasks:
     - name: Creating container using HTTPD Image
       docker_container:
         name: "MyWebServer" #"{{container_name}}""
@@ -79,4 +82,6 @@
     #- name: Get its output
     #debug:
     #  msg: "Docker said: {{ container_output.Output }}"
+
+
 
