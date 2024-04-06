@@ -76,7 +76,7 @@
         - /myWebApp:/usr/local/apache2/htdocs/
       register: container_output  #return output of the container
 
-    - name: Get container output
+    - name: Get its output
     debug:
       msg: "Docker said: {{ container_output.Output }}"
 
