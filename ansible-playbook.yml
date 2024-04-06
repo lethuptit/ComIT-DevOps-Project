@@ -57,8 +57,8 @@
         src: "index.html"
         dest: "/myfile/"
 
-    - name: Add docker credentials for ubuntu user
-      copy: src=.docker/dockercfg.json dest=/root/.dockercfg
+    #- name: Add docker credentials for ubuntu user
+    #  copy: src=.docker/dockercfg.json dest=/root/.dockercfg
 
     - name: Creating container using HTTPD Image
       docker_container:
