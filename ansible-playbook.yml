@@ -1,6 +1,6 @@
 ---
 - hosts: ec2-instance
-  become: true
+  become: false
   vars:
     container_count: 4
     container_name: docker_web
@@ -52,7 +52,7 @@
         path: "/myfile"
         state: directory
 
-    - name: "Copying local files"
+    - name: Copying local files
       copy:
         src: "index.html"
         dest: "/myfile/"
