@@ -52,9 +52,14 @@
         path: "/ComIT-Project"
         state: directory
 
-    - name: Copying local files
+    - name: Copying DB script
       copy:
-        src: "."
+        src: "./Database/myquery.sql"
+        dest: "/ComIT-Project/"
+
+    - name: Copying web source files
+      copy:
+        src: "index.html"
         dest: "/ComIT-Project/"
       
 
