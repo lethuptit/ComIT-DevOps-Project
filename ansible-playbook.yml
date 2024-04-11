@@ -75,7 +75,7 @@
           - "5432:5432"
         volumes:
           #- /home/hitch_postgres_data:/var/lib/postgresql/data
-          - /ComIT-Project/Database/myquery.sql:/docker-entrypoint-initdb.d/query.sql
+          - /ComIT-Project/myquery.sql:/docker-entrypoint-initdb.d/query.sql
         env:
           POSTGRES_USER: "postgres"
           POSTGRES_PASSWORD: ""
