@@ -49,15 +49,14 @@
 
     - name: Creating folder and copying html file
       file:
-        path: "/myfile"
+        path: "/ComIT-Project"
         state: directory
 
     - name: Copying local files
       copy:
-        src: "index.html"
-        dest: "/myfile/"
-      loop:
-        "./Database/myquery.sql"
+        src: "."
+        dest: "/ComIT-Project/"
+      
 
     #- name: Add docker credentials for ubuntu user
     #  copy: src=.docker/dockercfg.json dest=/root/.dockercfg
@@ -71,7 +70,7 @@
           - "5432:5432"
         volumes:
           #- /home/hitch_postgres_data:/var/lib/postgresql/data
-          - /myfile/myquery.sql:/docker-entrypoint-initdb.d/query.sql
+          - /ComIT-Project/Database/myquery.sql:/docker-entrypoint-initdb.d/query.sql
         env:
           POSTGRES_USER: "postgres"
           POSTGRES_PASSWORD: ""
