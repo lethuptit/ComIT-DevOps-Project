@@ -63,7 +63,7 @@
       docker_container:
         name: postgresDB
         image: postgres
-        state: restarted
+        state: started
         recreate: yes
         ports:
           - "5432:5432"
