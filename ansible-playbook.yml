@@ -69,7 +69,7 @@
           - "5432:5432"
         volumes:
           #- /home/hitch_postgres_data:/var/lib/postgresql/data
-          - .wordsmith/db/myquery.sql:/docker-entrypoint-initdb.d/query.sql
+          - ./wordsmith/db/myquery.sql:/docker-entrypoint-initdb.d/query.sql
         #env:
         #  POSTGRES_USER: "myuser"
         #  POSTGRES_PASSWORD: "myuser"
