@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script type="text/javascript" src="https://www.apispreadsheets.com/import.js"></script>
+   <script type="text/javascript">
+      function importComplete(success, data) {
+         console.log(success)
+         if (success){
+             console.log(data);
+         }
+      }
+
+      function matchComplete(matchRequired, matchSuccess){
+          if (matchRequired){
+              // if first uploaded file has finished matching, do something
+              if(matchSuccess[0]){
+                  // close the importer if you wish 
+                  // importer.closeImporter()
+              }
+          }
+      }
+
+      let importer = new APISpreadsheetsImporter("3602d167d52a5d6914e6649a4158f672", importComplete, matchComplete);
+
+   </script>
+</head>
+<body>
+   <button class="api-spreadsheets-import-button" onclick="importer.importFiles();">Import Excel and CSV Files</button>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<script>
+    function SubForm (){
+        $.ajax({
+            url:'https://api.apispreadsheets.com/data/jMGwn06FaKODhaKy/',
+            type:'post',
+            headers:{
+              accessKey: "3f7608848c6cb3c4fbf02649c59b7ba5",
+              secretKey: "255bb6cfdfca9f0cac3c7df9ebc74b3c"
+            },
+            data:$("#myForm").serializeArray(),
+            success: function(){
+              alert("Form Data Submitted :)")
+            },
+            error: function(e){
+              alert("There was an error :(")
+            }
+        });
+    }
+    </script>

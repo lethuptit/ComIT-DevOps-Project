@@ -1,0 +1,15 @@
+<script>
+    function SubForm (){
+        $.ajax({
+            url:'https://api.apispreadsheets.com/data/jMGwn06FaKODhaKy/',
+            type:'post',
+            data:$("#myForm").serializeArray(),
+            success: function(){
+              alert("Form Data Submitted :)")
+            },
+            error: function(e){
+              alert("There was an error :(")
+            }
+        });
+    }
+    </script>

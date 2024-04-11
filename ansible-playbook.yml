@@ -59,10 +59,26 @@
 
     #- name: Add docker credentials for ubuntu user
     #  copy: src=.docker/dockercfg.json dest=/root/.dockercfg
+    - name: Create PostgresDB container
+      docker_container:
+        name: postgresDB
+        image: postgres
+        state: started
+        recreate: yes
+        ports:
+          - "5432:5432"
+        volumes:
+          #- /home/hitch_postgres_data:/var/lib/postgresql/data
+          - ./db/myquery.sql:/docker-entrypoint-initdb.d/query.sql
+        #env:
+        #  POSTGRES_USER: "myuser"
+        #  POSTGRES_PASSWORD: "myuser"
 
 - hosts: ec2-instance
   become: false
   tasks:
+    
+
     - name: Creating container using HTTPD Image
       docker_container:
         name: "MyWebServer" #"{{container_name}}""

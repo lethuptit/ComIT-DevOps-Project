@@ -1,0 +1,22 @@
+{
+    "data": [
+       {
+          "title": "The Avengers", 
+          "genre": "Action", 
+          "director": "Joss Whedon",
+          "release_year": 2012
+        },
+        {
+          "title": "Parasite", 
+          "genre": "Drama", 
+          "director": "Bong Joon-ho",
+          "release_year": 2019
+        },
+        {
+          "title": "Knives Out", 
+          "genre": "Thriller", 
+          "director": "Rian Johnson",
+          "release_year": 2019
+        }
+    ]
+  }
