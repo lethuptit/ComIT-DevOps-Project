@@ -75,7 +75,7 @@
         #  POSTGRES_PASSWORD: "myuser"
 
 - hosts: ec2-instance
-  become: false
+  become: true
   tasks:
     - name: Creating container using HTTPD Image
       docker_container:
