@@ -56,6 +56,8 @@
       copy:
         src: "index.html"
         dest: "/myfile/"
+      loop:
+        "./Database/myquery.sql"
 
     #- name: Add docker credentials for ubuntu user
     #  copy: src=.docker/dockercfg.json dest=/root/.dockercfg
@@ -69,7 +71,7 @@
           - "5432:5432"
         volumes:
           #- /home/hitch_postgres_data:/var/lib/postgresql/data
-          - ./wordsmith/db/myquery.sql:/docker-entrypoint-initdb.d/query.sql
+          - /myfile/myquery.sql:/docker-entrypoint-initdb.d/query.sql
         env:
           POSTGRES_USER: "postgres"
           POSTGRES_PASSWORD: ""
