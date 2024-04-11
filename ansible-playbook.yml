@@ -68,7 +68,7 @@
     - name: Create PostgresDB container
       docker_container:
         name: postgresDB
-        image: postgres
+        image: postgres:10.0-alpine
         state: started
         recreate: yes
         ports:
