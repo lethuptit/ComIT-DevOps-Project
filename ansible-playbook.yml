@@ -63,13 +63,13 @@
       docker_container:
         name: postgresDB
         image: postgres
-        state: started
-        recreate: yes
+        #state: started
+        #recreate: yes
         ports:
           - "5432:5432"
         volumes:
           #- /home/hitch_postgres_data:/var/lib/postgresql/data
-          - ./db/myquery.sql:/docker-entrypoint-initdb.d/query.sql
+          - .wordsmith/db/myquery.sql:/docker-entrypoint-initdb.d/query.sql
         #env:
         #  POSTGRES_USER: "myuser"
         #  POSTGRES_PASSWORD: "myuser"
