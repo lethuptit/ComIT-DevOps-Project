@@ -73,25 +73,27 @@
     #    state: present
 
     - name: add user mod
-      command: sudo usermod -aG docker ubuntu
+      command: sudo usermod -aG docker ubuntu   
 
-    - name: ensure a container is running
+    - name: Create PostgresDB container
       docker_container:
-        name: postgres_db_2
+        name: postgresDB
+        image: postgres:10.0-alpine
         state: started
-        restart_policy: always
-        image: postgres
         detach: no
+    #    restart_policy: always
+        recreate: yes
         ports:
           - "5432:5432"
         volumes:
           #- /home/hitch_postgres_data:/var/lib/postgresql/data
           #- /ComIT-Project/myquery.sql:/docker-entrypoint-initdb.d/query.sql
           - /ComIT-Project/myquery.sql:/docker-entrypoint-initdb.d/query.sql
-        #env:
-        #  POSTGRES_USER: "postgres"
-        #  POSTGRES_PASSWORD: ""
-      register: docker_output
+    #    env:
+    #      POSTGRES_USER: "postgres"
+    #      POSTGRES_PASSWORD: ""
+s
+        register: docker_output
 
     - name: Show test output
       debug:
@@ -99,23 +101,6 @@
 
     - name: docker started
       service: name=docker state=restarted
-
-    #- name: Create PostgresDB container
-    #  docker_container:
-    #    name: postgresDB
-    #    image: postgres:10.0-alpine
-    #    state: started
-    #    restart_policy: always
-    #    recreate: yes
-    #    ports:
-    #      - "5432:5432"
-    #    volumes:
-    #      #- /home/hitch_postgres_data:/var/lib/postgresql/data
-    #      #- /ComIT-Project/myquery.sql:/docker-entrypoint-initdb.d/query.sql
-    #      - /ComIT-Project/myquery.sql:/docker-entrypoint-initdb.d/query.sql
-    #    env:
-    #      POSTGRES_USER: "postgres"
-    #      POSTGRES_PASSWORD: ""
 
 - hosts: ec2-instance
   become: true
@@ -134,7 +119,7 @@
         - "80:8000"
         volumes:
         - /myWebApp:/usr/local/apache2/htdocs/
-      register: container_output  #return output of the container
+      #register: container_output  #return output of the container
 
     #- name: Get its output
     #debug:
