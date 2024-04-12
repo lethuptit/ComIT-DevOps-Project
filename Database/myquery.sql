@@ -57,4 +57,4 @@ INSERT INTO adjectives(word) VALUES
   ('the deliciøus');
 
 INSERT INTO user(id, pass) VALUES
-('admin', '123456')
+('admin', '123456');
