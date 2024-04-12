@@ -92,8 +92,8 @@
         env:
           POSTGRES_USER: "postgres"
           POSTGRES_PASSWORD: ""
-          PGADMIN_DEFAULT_EMAIL:"thule1710@gmail.com"
-          PGADMIN_DEFAULT_PASSWORD:"postgresmaster"
+          PGADMIN_DEFAULT_EMAIL: "thule1710@gmail.com"
+          PGADMIN_DEFAULT_PASSWORD: "kajshdJHD"
       register: docker_output
 
     - name: Show test output
