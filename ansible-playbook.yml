@@ -101,7 +101,7 @@
 
     - name: Run DB
       #command: docker run -d   postgres:10.0-alpine
-      command: docker restart $(docker ps -a -q) 
+      command: docker restart postgresDB 
 
     #- name: Show test output
     #  debug:
