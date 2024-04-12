@@ -81,7 +81,7 @@
         image: postgres:10.0-alpine
         state: started
         detach: no
-    #    restart_policy: always
+        #restart_policy: always
         recreate: yes
         ports:
           - "5432:5432"
@@ -89,12 +89,10 @@
           #- /home/hitch_postgres_data:/var/lib/postgresql/data
           #- /ComIT-Project/myquery.sql:/docker-entrypoint-initdb.d/query.sql
           - /ComIT-Project/myquery.sql:/docker-entrypoint-initdb.d/query.sql
-    #    env:
-    #      POSTGRES_USER: "postgres"
-    #      POSTGRES_PASSWORD: ""
-
-        register: docker_output
-
+        env:
+          POSTGRES_USER: "postgres"
+          POSTGRES_PASSWORD: ""
+      register: docker_output
     - name: Show test output
       debug:
         msg: "Output: {{ docker_output.Output }}" 
