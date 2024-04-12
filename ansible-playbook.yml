@@ -66,10 +66,11 @@
     #- name: Add docker credentials for ubuntu user
     #  copy: src=.docker/dockercfg.json dest=/root/.dockercfg
 
-    - name: pull image postgres9.6.0
-      docker_image:
-        name: postgres
-        state: present
+    #- name: pull image postgres9.6.0
+    #  docker_image:
+    #    name: postgres
+    #    state: present
+
     - name: add user mod
       command: sudo usermod -aG docker ubuntu
 
@@ -78,7 +79,7 @@
         name: postgres_db_2
         state: started
         restart_policy: always
-        image: postgres:9.6.0
+        image: postgres
         pull: false 
         detach: yes
         ports:
