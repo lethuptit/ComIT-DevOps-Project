@@ -80,7 +80,7 @@
         name: postgresDB
         image: postgres:10.0-alpine
         state: started
-        detach: no
+        detach: yes
         #restart_policy: always
         recreate: yes
         ports:
@@ -92,10 +92,10 @@
         env:
           POSTGRES_USER: "postgres"
           POSTGRES_PASSWORD: "postgres"
-          PGADMIN_DEFAULT_EMAIL:thule1710@gmail.com -e 
-          PGADMIN_DEFAULT_PASSWORD:postgresmaster'
+          PGADMIN_DEFAULT_EMAIL:"thule1710@gmail.com"
+          PGADMIN_DEFAULT_PASSWORD:"postgresmaster"
       register: docker_output
-      
+
     - name: Show test output
       debug:
         msg: "Output: {{ docker_output.Output }}" 
