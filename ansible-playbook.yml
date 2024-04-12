@@ -125,8 +125,8 @@
         - "80:8000"
         volumes:
         - /myWebApp:/usr/local/apache2/htdocs/
-      depends_on:
-      - postgresDB
+      #depends_on:
+      #- postgresDB
       #register: container_output  #return output of the container
 
     #- name: Get its output
