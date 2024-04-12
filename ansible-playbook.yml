@@ -80,7 +80,7 @@
         state: started
         restart_policy: always
         image: postgres
-        detach: yes
+        detach: no
         ports:
           - "5432:5432"
       register: docker_output
