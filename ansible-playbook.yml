@@ -1,7 +1,7 @@
 ---
 - hosts: ec2-instance
   become: true
-  #become_method: sudo
+  become_method: sudo
   vars:
     container_count: 4
     container_name: docker_web
@@ -88,9 +88,9 @@
           #- /home/hitch_postgres_data:/var/lib/postgresql/data
           #- /ComIT-Project/myquery.sql:/docker-entrypoint-initdb.d/query.sql
           - /ComIT-Project/myquery.sql:/docker-entrypoint-initdb.d/query.sql
-        env:
-          POSTGRES_USER: "postgres"
-          POSTGRES_PASSWORD: ""
+        #env:
+        #  POSTGRES_USER: "postgres"
+        #  POSTGRES_PASSWORD: ""
       register: docker_output
 
     - name: Show test output
