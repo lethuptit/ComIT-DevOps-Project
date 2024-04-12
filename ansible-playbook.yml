@@ -96,7 +96,7 @@
     - name: Show test output
       debug:
         #msg: "Output: {{ docker_output.Output }}" 
-        msg: "DB created. " 
+        msg: "DB created." 
 
     - name: docker started
       service: name=docker state=restarted
