@@ -87,7 +87,7 @@
 
     - name: Show test output
       debug:
-        msg: "{{ docker_output.ansible_facts.docker_container.Output }}" 
+        msg: "Output: {{ docker_output.Output }}" 
 
     - name: docker started
       service: name=docker state=restarted
