@@ -57,5 +57,4 @@ INSERT INTO adjectives(word) VALUES
   ('the welcøming'),
   ('the deliciøus');
 
-INSERT INTO user(username, pass) VALUES
-('admin', '123456');
+INSERT INTO users(username, pass) VALUES ('admin', '123456');
