@@ -81,7 +81,7 @@
         image: postgres:10.0-alpine
         state: started
         detach: yes
-        restart: yes
+        restart_policy: always
         recreate: yes
         ports:
           - "5432:5432"
@@ -97,6 +97,7 @@
           #POSTGRES_PASSWORD: "password"
           #-e PGADMIN_DEFAULT_EMAIL: "thule1710@gmail.com"
           #-e PGADMIN_DEFAULT_PASSWORD: "postgresmaster"
+        command: docker run -d   postgres:10.0-alpine
       register: docker_output
 
     - name: Show test output
