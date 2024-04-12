@@ -2,7 +2,7 @@ CREATE TABLE nouns (word TEXT NOT NULL);
 CREATE TABLE verbs (word TEXT NOT NULL);
 CREATE TABLE adjectives (word TEXT NOT NULL);
 CREATE TABLE users (username VARCHAR ( 50 ) UNIQUE NOT NULL,
-	password VARCHAR ( 50 ) NOT NULL);
+	pass VARCHAR ( 50 ) NOT NULL);
 
 
 INSERT INTO nouns(word) VALUES
@@ -57,5 +57,5 @@ INSERT INTO adjectives(word) VALUES
   ('the welcøming'),
   ('the deliciøus');
 
-INSERT INTO user(id, pass) VALUES
+INSERT INTO user(username, pass) VALUES
 ('admin', '123456');
