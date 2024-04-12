@@ -92,7 +92,7 @@
     #    env:
     #      POSTGRES_USER: "postgres"
     #      POSTGRES_PASSWORD: ""
-s
+
         register: docker_output
 
     - name: Show test output
