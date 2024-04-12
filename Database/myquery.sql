@@ -1,7 +1,8 @@
 CREATE TABLE nouns (word TEXT NOT NULL);
 CREATE TABLE verbs (word TEXT NOT NULL);
 CREATE TABLE adjectives (word TEXT NOT NULL);
-CREATE TABLE user (id TEXT NOT NULL, pass TEXT NOT NULL);
+CREATE TABLE users (username VARCHAR ( 50 ) UNIQUE NOT NULL,
+	password VARCHAR ( 50 ) NOT NULL);
 
 
 INSERT INTO nouns(word) VALUES
