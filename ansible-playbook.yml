@@ -97,18 +97,19 @@
           #POSTGRES_PASSWORD: "password"
           #-e PGADMIN_DEFAULT_EMAIL: "thule1710@gmail.com"
           #-e PGADMIN_DEFAULT_PASSWORD: "postgresmaster"
-      register: docker_output
+      #register: docker_output
 
     - name: Run DB
-      command: docker run -d   postgres:10.0-alpine
+      #command: docker run -d   postgres:10.0-alpine
+      command: docker restart $(docker ps -a -q)
 
-    - name: Show test output
-      debug:
+    #- name: Show test output
+    #  debug:
         #msg: "Output: {{ docker_output.Output }}" 
-        msg: "DB created." 
+    #    msg: "DB created." 
 
-    - name: docker started
-      service: name=docker state=restarted
+    #- name: docker started
+    #  service: name=postgresDB state=restarted
 
 - hosts: ec2-instance
   become: true
