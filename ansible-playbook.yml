@@ -97,8 +97,10 @@
           #POSTGRES_PASSWORD: "password"
           #-e PGADMIN_DEFAULT_EMAIL: "thule1710@gmail.com"
           #-e PGADMIN_DEFAULT_PASSWORD: "postgresmaster"
-        command: docker run -d   postgres:10.0-alpine
       register: docker_output
+
+    - name: Run DB
+      command: docker run -d   postgres:10.0-alpine
 
     - name: Show test output
       debug:
