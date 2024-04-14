@@ -91,7 +91,7 @@
           - /ComIT-Project/myquery.sql:/docker-entrypoint-initdb.d/query.sql
         env:
           POSTGRES_USER: "postgres"
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: "postgres"
           POSTGRES_DB: exampledb
           #POSTGRES_HOST_AUTH_METHOD: trust
           #POSTGRES_PASSWORD: "password"
@@ -109,7 +109,7 @@
     #    msg: "DB created." 
 
     - name: docker started
-      service: name=docker state=restarted
+      service: name=postgresDB state=restarted
 
 - hosts: ec2-instance
   become: true
