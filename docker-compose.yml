@@ -14,7 +14,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: flask_db
     volumes:
-      - db:/var/lib/postgresql/data
+      #- db:/var/lib/postgresql/data
       - /ComIT-Project/myquery.sql:/docker-entrypoint-initdb.d/initdb.sql
 
   adminer:
