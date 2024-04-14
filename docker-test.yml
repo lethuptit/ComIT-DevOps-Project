@@ -54,5 +54,5 @@
         ports:
         - "80:80"
         volumes:
-        - /myWebApp:/usr/local/apache2/htdocs/
+        - /ComIT-Project:/usr/local/apache2/htdocs/
 
