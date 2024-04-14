@@ -81,9 +81,9 @@
         #debug: no
         pull: yes
         exposed_ports:
-        - "5000"
+        - "8000"
         ports:
-        - "8080:5000"
+        - "8080:8000"
         volumes:
         - /ComIT-Project:/usr/local/apache2/htdocs/
       #depends_on:
