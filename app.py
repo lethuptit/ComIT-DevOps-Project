@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for 
+from sqlalchemy import create_engine, insert, text
 import psycopg2 
   
 app = Flask(__name__) 
 
-host_name='localhost'  
+host_name='44.205.247.141'  
 # Connect to the database 
+#engine = create_engine("postgresql+psycopg2://postgres:postgres@db:5432/flask_db")
+#conn = engine.connect()
 conn = psycopg2.connect(database="flask_db", user="postgres", password="postgres", host=host_name, port="5432") 
   
 # create a cursor 
