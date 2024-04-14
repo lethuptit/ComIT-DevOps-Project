@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for 
-from sqlalchemy import create_engine, insert, text
 import psycopg2 
   
 app = Flask(__name__) 
