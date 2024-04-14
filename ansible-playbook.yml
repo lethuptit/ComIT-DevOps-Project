@@ -108,8 +108,8 @@
         #msg: "Output: {{ docker_output.Output }}" 
     #    msg: "DB created." 
 
-    - name: docker started
-      service: name=postgresDB state=restarted
+    #- name: docker started
+    #  service: name=postgresDB state=restarted
 
 - hosts: ec2-instance
   become: true
