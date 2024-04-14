@@ -2,9 +2,10 @@ from flask import Flask, render_template, request, redirect, url_for
 import psycopg2 
   
 app = Flask(__name__) 
-  
+
+host_name='localhost'  
 # Connect to the database 
-conn = psycopg2.connect(database="flask_db", user="postgres", password="postgres", host="localhost", port="5432") 
+conn = psycopg2.connect(database="flask_db", user="postgres", password="postgres", host=host_name, port="5432") 
   
 # create a cursor 
 cur = conn.cursor() 
@@ -32,7 +33,7 @@ def index():
     conn = psycopg2.connect(database="flask_db", 
                             user="postgres", 
                             password="postgres", 
-                            host="localhost", port="5432") 
+                            host=host_name, port="5432") 
   
     # create a cursor 
     cur = conn.cursor() 
@@ -55,7 +56,7 @@ def create():
     conn = psycopg2.connect(database="flask_db", 
                             user="postgres", 
                             password="postgres", 
-                            host="localhost", port="5432") 
+                            host=host_name, port="5432") 
   
     cur = conn.cursor() 
   
@@ -81,7 +82,7 @@ def update():
     conn = psycopg2.connect(database="flask_db", 
                             user="postgres", 
                             password="postgres", 
-                            host="localhost", port="5432") 
+                            host=host_name, port="5432") 
   
     cur = conn.cursor() 
   
@@ -101,7 +102,7 @@ def update():
   
 @app.route('/delete', methods=['POST']) 
 def delete(): 
-    conn = psycopg2.connect(database="flask_db", user="postgres", password="postgres", host="localhost", port="5432") 
+    conn = psycopg2.connect(database="flask_db", user="postgres", password="postgres", host=host_name, port="5432") 
     cur = conn.cursor() 
   
     # Get the data from the form 
