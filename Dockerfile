@@ -48,4 +48,4 @@ COPY . .
 EXPOSE 8000
 
 # Run the application.
-CMD python3 Test.py
+CMD python3 app.py
