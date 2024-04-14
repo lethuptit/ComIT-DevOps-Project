@@ -55,7 +55,7 @@
 
     - name: Copying DB script
       copy:
-        src: "../ComIT-Project/"
+        src: "./Database/myquery.sql"
         dest: "/ComIT-Project/"
 
     - name: Copying web source files
