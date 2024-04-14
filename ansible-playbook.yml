@@ -117,11 +117,11 @@
     - name: Creating container using HTTPD Image
       docker_container:
         name: "MyWebServer" #"{{container_name}}""
-        image: "httpd" 
-        #image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest" #"{{ container_image }}"
+        #image: "httpd" 
+        image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest" #"{{ container_image }}"
         state: started
         #debug: no
-        #pull: yes
+        pull: yes
         exposed_ports:
         - "80"
         ports:
