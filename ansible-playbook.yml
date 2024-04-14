@@ -121,7 +121,7 @@
         #image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest" #"{{ container_image }}"
         state: started
         #debug: no
-        pull: yes
+        #pull: yes
         exposed_ports:
         - "80"
         ports:
