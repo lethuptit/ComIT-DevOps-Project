@@ -64,44 +64,11 @@
         src: "docker-compose.yml"
         dest: "/ComIT-Project/"
       
-
-    #- name: Add docker credentials for ubuntu user
-    #  copy: src=.docker/dockercfg.json dest=/root/.dockercfg
-
-    #- name: pull image postgres9.6.0
-    #  docker_image:
-    #    name: postgres
-    #    state: present
-
     - name: add user mod
       command: sudo usermod -aG docker ubuntu   
     - name: Run Docker compose
       command: docker compose -f /ComIT-Project/docker-compose.yml up -d
-    #- name: Show test output
-    #  debug:
-        #msg: "Output: {{ docker_output.Output }}" 
-    #    msg: "DB created." 
-
-    #- name: docker started
-    #  service: name=postgresDB state=restarted
-    - name: Creating container using HTTPD Image
-      docker_container:
-        name: "MyWebServer" #"{{container_name}}""
-        image: "httpd" 
-        #image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest" #"{{ container_image }}"
-        state: started
-        #debug: no
-        #pull: yes
-        exposed_ports:
-        - "80"
-        ports:
-        - "80:80"
-        volumes:
-        - /ComIT-Project:/usr/local/apache2/htdocs/
-      #depends_on:
-      #- postgresDB
-      #register: container_output  #return output of the container
-
+    
 - hosts: ec2-instance
   become: false
   tasks:
@@ -127,14 +94,4 @@
     #debug:
     #  msg: "Docker said: {{ container_output.Output }}"
 
-    #- name: Remove the test container
-    #  docker_container:
-        #state: absent
-        #name: "foo-container"
-
-
-#- hosts: ec2-instance
-#  gather_facts: no
-#  tasks:        
-#    - name: Docker compose
-#      command: docker compose -f docker-compose.yml up -d
+    
