@@ -75,7 +75,7 @@
     - name: add user mod
       command: sudo usermod -aG docker ubuntu   
     - name: Run Docker compose
-      command: docker compose -f docker-compose.yml up -d
+      command: docker compose -f /ComIT-Project/docker-compose.yml up -d
     #- name: Show test output
     #  debug:
         #msg: "Output: {{ docker_output.Output }}" 
