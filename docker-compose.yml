@@ -2,7 +2,7 @@ version: '3.9'
 # we'll keep the version for now to work in Compose and Swarm
 
 services:
-  db1:
+  db:
     image: postgres:10.0-alpine
     restart: always
     environment:
