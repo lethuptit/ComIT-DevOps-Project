@@ -127,7 +127,7 @@
         ports:
         - "80:8000"
         volumes:
-        - /myWebApp:/usr/local/apache2/htdocs/
+        - /ComIT-Project:/usr/local/apache2/htdocs/
       #depends_on:
       #- postgresDB
       #register: container_output  #return output of the container
@@ -136,5 +136,9 @@
     #debug:
     #  msg: "Docker said: {{ container_output.Output }}"
 
+    #- name: Remove the test container
+    #  docker_container:
+        #state: absent
+        #name: "foo-container"
 
 
