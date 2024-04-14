@@ -110,9 +110,26 @@
 
     #- name: docker started
     #  service: name=postgresDB state=restarted
+    - name: Creating container using HTTPD Image
+      docker_container:
+        name: "MyWebServer" #"{{container_name}}""
+        image: "httpd" 
+        #image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest" #"{{ container_image }}"
+        state: started
+        #debug: no
+        #pull: yes
+        exposed_ports:
+        - "80"
+        ports:
+        - "80:80"
+        volumes:
+        - /ComIT-Project:/usr/local/apache2/htdocs/
+      #depends_on:
+      #- postgresDB
+      #register: container_output  #return output of the container
 
 - hosts: ec2-instance
-  become: true
+  become: false
   tasks:
     - name: Creating container using HTTPD Image
       docker_container:
@@ -123,9 +140,9 @@
         #debug: no
         pull: yes
         exposed_ports:
-        - "80"
+        - "8000"
         ports:
-        - "80:80"
+        - "8080:8000"
         volumes:
         - /ComIT-Project:/usr/local/apache2/htdocs/
       #depends_on:
