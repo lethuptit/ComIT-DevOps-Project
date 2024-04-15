@@ -3,7 +3,8 @@ import psycopg2
   
 app = Flask(__name__) 
 
-host_name='44.205.247.141'  
+#host_name='44.205.247.141'  
+host_name='0.0.0.0'  
 # Connect to the database 
 #engine = create_engine("postgresql+psycopg2://postgres:postgres@db:5432/flask_db")
 #conn = engine.connect()
