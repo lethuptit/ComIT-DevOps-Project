@@ -85,10 +85,7 @@
         - "8080:8000"
         volumes:
         - /ComIT-Project:/usr/local/apache2/htdocs/
-      #depends_on:
-      #- postgresDB
-      #register: container_output  #return output of the container
-
+      
     #- name: Get its output
     #debug:
     #  msg: "Docker said: {{ container_output.Output }}"
