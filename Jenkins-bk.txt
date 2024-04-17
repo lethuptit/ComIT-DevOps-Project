@@ -1,0 +1,116 @@
+pipeline {
+    agent any
+    // the required tools or dependencies are installed, configured using the Declarative Pipeline syntax.
+    /*tools {
+        maven "Maven3"
+    }
+    environment {
+        IMAGE_REPO_NAME="config-server-sample"
+        IMAGE_TAG="$BUILD_NUMBER"
+		SERVICE_NAME="config-server"
+        BUILD_TAG="0.0.1-SNAPSHOT"
+        REPOSITORY_URI="1234567890.dkr.ecr.ap-south-1.amazonaws.com"
+    }*/
+    
+    stages {
+        
+        /*stage('Prune docker data'){
+            steps{
+                sh 'docker system prune -a --volumes -f'
+            }
+        }*/
+        
+        stage('Checkout the code') {
+            steps {
+                //git branch: 'main', url: 'https://github.com/lethuptit/wordsmith.git'
+                git branch: 'main', url: 'https://github.com/lethuptit/ComIT-Project.git'
+            }
+        }
+        
+        stage('Build the code') {
+            steps {
+                script{
+                    app = docker.build('test')// using aws credentical to connect AWS
+                    //sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 1234567890.dkr.ecr.ap-south-1.amazonaws.com"
+                    //sh 'docker compose build'    
+                    //echo 'Docker-compose-build Build Image Completed' 
+                }
+                
+            }
+        }
+        
+        
+        stage('Push the code') {
+            steps {
+                script{
+                    // cleanup current user docker credentials
+                    //sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
+                    //pass = sh('aws ecr-public get-login-password --region us-east-1 ')
+                    //sh("eval \$(docker login --username AWS  -p $pass public.ecr.aws/i8t7d4f9 )")
+                    //sh("eval \$(aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/i8t7d4f9)")
+                    docker.withRegistry('https://654654452340.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws-login')    {
+                        app.push("${env.BUILD_NUMBER}")
+                        app.push("latest")
+                    }
+                }
+                
+            }
+        }
+        
+        stage('Run ansible Playbook'){
+            steps{
+                script{
+                    docker.withRegistry('https://654654452340.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws-login') {
+                        sshagent(credentials:['ec2-user']){
+                            sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 44.205.247.141  uname -a'
+                            //sh 'ssh -o StrictHostKeyChecking=no -l ec2-user 3.83.17.64 uname -a'
+                            ansiblePlaybook credentialsId: 'AKIAZQ3DSGJ2PRYDMGUW',
+                            installation: 'ansible',
+                            inventory:'/etc/ansible/hosts',
+                            playbook:'ansible-playbook.yml',
+                            vaultTmpPath:'',
+                            extras:'--extra-vars "aws_access_key=AKIAZQ3DSGJ2PRYDMGUW"'
+                        }
+                    }
+                }
+            }
+        }
+        
+        /*stage ('Remove Image from Jenkins'){
+            steps{
+                script{
+                    sh "docker rmi ${REPOSITORY_URI}/${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+                }
+            }
+        }*/
+    }
+
+    post {  
+        always{
+            echo sh(script: 'env|sort', returnStdout: true)
+        }
+        success {  
+            echo 'This will run only if successful'  
+            mail to: 'thule1710@gmail.com',
+                 subject: "SUCCESS: ${currentBuild.fullDisplayName}",
+                 body: "Test Complete Build passed."
+        }  
+        failure {  
+            mail body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", 
+            charset: 'UTF-8', 
+            from: 'Jenkins server', mimeType: 'text/html', 
+            //subject: "ERROR CI: Project name -> ${env.JOB_NAME}"
+            subject: "Project ${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${env.BUILD_STATUS}!",
+            replyTo: "noreply@gmail.com",
+            to: "thule1710@gmail.com"
+            ;  
+        }  
+        unstable {  
+            echo 'This will run only if the run was marked as unstable'  
+        }  
+        changed {  
+            echo 'This will run only if the state of the Pipeline has changed'  
+            echo 'For example, if the Pipeline was previously failing but is now successful'  
+        }  
+     } 
+}

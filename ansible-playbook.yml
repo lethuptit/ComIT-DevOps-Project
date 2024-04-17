@@ -74,7 +74,7 @@
   tasks:
     - name: Creating container using my python Image
       docker_container:
-        name: "MyWebServer" #"{{container_name}}""
+        name: "MyWebServer"
         image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest" #"{{ container_image }}"
         state: started
         #debug: no
