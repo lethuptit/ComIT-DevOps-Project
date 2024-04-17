@@ -59,8 +59,7 @@
         dest: "/ComIT-Project/"
 
     - name: Copying web source files
-      copy:
-        #src: "index.html"docker-compose.yml
+      copy:       
         src: "docker-compose.yml"
         dest: "/ComIT-Project/"
       
