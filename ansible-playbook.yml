@@ -74,7 +74,7 @@
     - name: Creating container using my python Image
       docker_container:
         name: "MyWebServer"
-        image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/test:latest" #"{{ container_image }}"
+        image: "654654452340.dkr.ecr.us-east-1.amazonaws.com/comit:latest" #"{{ container_image }}"        
         state: started
         #debug: no
         pull: yes
