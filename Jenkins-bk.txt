@@ -88,19 +88,20 @@ pipeline {
     post {  
         always{
             echo sh(script: 'env|sort', returnStdout: true)
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test
         }
         success {  
             echo 'This will run only if successful'  
             mail to: 'thule1710@gmail.com',
-                 subject: "SUCCESS: ${currentBuild.fullDisplayName}",
-                 body: "Test Complete Build passed."
+                 subject: "Project ${currentBuild.fullDisplayName} - Build #${env.BUILD_NUMBER} - ${currentBuild.result} ",
+                 body: "Build  #${env.BUILD_NUMBER} passed successfully."
         }  
         failure {  
-            mail body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", 
+            mail body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL build log: ${env.BUILD_URL}", 
             charset: 'UTF-8', 
             from: 'Jenkins server', mimeType: 'text/html', 
             //subject: "ERROR CI: Project name -> ${env.JOB_NAME}"
-            subject: "Project ${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${env.BUILD_STATUS}!",
+            subject: "Jenkins project '${env.JOB_NAME}' - Build #${env.BUILD_NUMBER} - ${currentBuild.result} !",
             replyTo: "noreply@gmail.com",
             to: "thule1710@gmail.com"
             ;  
