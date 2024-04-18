@@ -63,8 +63,8 @@
         src: "docker-compose.yml"
         dest: "/ComIT-Project/"
       
-    - name: add user mod
-      command: sudo usermod -aG docker ubuntu   
+    #- name: add user mod
+    #  command: sudo usermod -aG docker ubuntu   
     - name: Run Docker compose
       command: docker compose -f /ComIT-Project/docker-compose.yml up -d
     
