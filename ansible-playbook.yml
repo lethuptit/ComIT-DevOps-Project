@@ -43,10 +43,10 @@
       pip:
         name: docker
 
-    - name: Pull default Docker image
-      docker_image:
-        name: "{{ container_image }}"
-        source: pull
+    #- name: Pull default Docker image
+    #  docker_image:
+    #    name: "{{ container_image }}"
+    #    source: pull
 
     - name: Creating folder and copying html file
       file:
