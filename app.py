@@ -96,7 +96,7 @@ def update():
   
     # Update the data in the table 
     cur.execute( 
-        '''UPDATE products SET name=%s, price=%s WHERE id=%s''', (name, price, id)) 
+        '''UPDATE products SET name=%s, price=%s WHERE id=%s''', (name, 90, id)) 
   
     # commit the changes 
     conn.commit() 
