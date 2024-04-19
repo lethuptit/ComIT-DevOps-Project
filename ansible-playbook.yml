@@ -3,10 +3,7 @@
   become: true
   #become_method: sudo
   vars:
-    container_count: 4
-    container_name: docker_web
-    container_image: ubuntu
-    container_command: sleep 1d
+    
   tasks:
     - name: Install required system packages
       apt:
